@@ -6,12 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Inclure Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Inclure Tailwind CSS (pour l'exemple, remplacez par votre propre lien ou intégration) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="antialiased pt-10 pb-16 md:pb-32">
     {{-- Conteneur global --}}
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {{-- Header --}}
+        <!-- Votre code de header ici -->
         <header class="flex justify-between items-center space-x-5 text-slate-900">
             {{-- Logo --}}
             <a href="{{ route('index') }}">
@@ -74,6 +78,35 @@
             </nav>
         </header>
 
+         {{-- Carousel --}}
+         <div class="mt-12">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Les 5 images du carousel -->
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/640x480.png" alt="Image 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/640x480.png" alt="Image 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/640x480.png" alt="Image 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/640x480.png" alt="Image 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/640x480.png" alt="Image 5">
+                    </div>
+                </div>
+                <!-- Flèches de navigation -->
+                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+            </div>
+        </div>
+        {{-- Fin du carousel --}}
+
+        {{-- Main Content --}}
         <main class="mt-10 md:mt-12 lg:mt-16">
             <div class="space-y-10 md:space-y-16">
                 {{-- Début du post --}}
@@ -87,6 +120,7 @@
                         <ul class="flex flex-wrap gap-2">
                             <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">Tag 1</a></li>
                             <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">Tag 2</a></li>
+                            <li><a href="" class="px-3 py-1 bg-indigo-700 text-indigo-50 rounded-full text-sm">Tag 3</a></li>
                         </ul>
                         <p class="text-xl lg:text-2xl text-slate-600">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, sapiente eaque consectetur rem nulla sit aliquam corporis labore obcaecati qui explicabo ipsum, mollitia ad iure, eligendi id consequuntur earum. Tempore.
@@ -102,6 +136,26 @@
                 {{-- Fin du post --}}
             </div>
         </main>
+
+
+
     </div>
+    <!-- Inclure Swiper JS après votre contenu HTML -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Initialiser Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 </body>
 </html>
+
+
+
+

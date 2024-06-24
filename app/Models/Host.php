@@ -9,7 +9,10 @@ class Host extends Model
 {
     use HasFactory;
 
-    // Définir les relations
+    protected $fillable = [
+        'name', 'picture'
+    ];
+
     public function logements()
     {
         return $this->hasMany(Logement::class);

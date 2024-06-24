@@ -9,19 +9,20 @@ class Logement extends Model
 {
     use HasFactory;
 
-    // Définir les relations
-    public function host()
-    {
-        return $this->belongsTo(Host::class);
-    }
+    protected $fillable = ['title', 'description', 'location', 'rating', 'cover', 'host_id'];
 
     public function equipements()
     {
-        return $this->belongsToMany(Equipement::class);
+        return $this->belongsToMany(Equipement::class, 'equipement_logement');
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'tag_logement');
+    }
+
+    public function host()
+    {
+        return $this->belongsTo(Host::class);
     }
 }

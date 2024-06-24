@@ -4,30 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateLogementsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('logements', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('cover');
             $table->text('description');
             $table->string('location');
-            $table->string('pictures');
+            $table->integer('rating');
+            $table->string('cover');
             $table->foreignId('host_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('logements');
     }
-};
+}
