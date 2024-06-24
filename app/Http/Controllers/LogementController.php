@@ -16,12 +16,15 @@ class LogementController extends Controller
         return view('logements.index', compact('logements'));
     }
 
-    public function show($id) // Ajout de l'ID pour récupérer un logement spécifique
+    // Méthode show dans votre contrôleur
+    public function show($id)
     {
-        // Récupérer le logement spécifique par son ID
-        $logement = Logement::with(['tags'])->findOrFail($id);
-
-        // Passez le logement à la vue
-        return view('logements.show', compact('logement'));
+        $logement = Logement::find($id);
+        if (!$logement) {
+            abort(404); // Ou tout autre gestion d'erreur appropriée
+        }
+        return view('logements.show', ['logement' => $logement]);
     }
+    
+
 }

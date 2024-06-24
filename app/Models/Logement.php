@@ -9,7 +9,13 @@ class Logement extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'location', 'rating', 'cover', 'host_id'];
+    protected $fillable = ['title', 'description', 'location', 'rating', 'cover', 'host_id', ];
+
+    protected $casts = [
+        'pictures' => 'array',
+        'host' => 'array',
+    ];
+
 
     public function equipements()
     {
