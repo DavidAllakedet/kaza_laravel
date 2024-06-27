@@ -19,10 +19,7 @@ class LogementController extends Controller
     // Méthode show dans votre contrôleur
     public function show($id)
     {
-        $logement = Logement::find($id);
-        if (!$logement) {
-            abort(404); // Ou tout autre gestion d'erreur appropriée
-        }
+        $logement = Logement::with(['pictures', 'tags', 'equipements'])->find($id);
         return view('logements.show', ['logement' => $logement]);
     }
     

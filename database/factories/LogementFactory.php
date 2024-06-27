@@ -1,43 +1,37 @@
 <?php
 
-namespace Database\Factories;
+// namespace Database\Factories;
 
-use App\Models\Logement;
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+// use App\Models\Logement;
+// use Illuminate\Database\Eloquent\Factories\Factory;
+// use Faker\Generator as Faker;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Logement>
- */
-class LogemetFactory extends Factory
-{
-    /**
-     * Le nom du modèle associé.
-     *
-     * @var string
-     */
-    protected $model = Logement::class;
+// class LogementFactory extends Factory
+// {
+//     protected $model = Logement::class;
 
-    /**
-     * Définir l'état par défaut du modèle.
-     *
-     * @return array
-     */
-    public function definition()
-    {
-        return [
-            'title' => $title,
-            // Génère un slug à partir du titre
-            'slug' => Str::slug($title),
-            // Génère un extrait du contenu, limité à 150 caractères
-            'excerpt' => Str::limit($content, 150),
-            'content' => $content,
-            // Génère une URL d'image aléatoire pour la miniature
-            'thumbnail' => fake()->imageUrl,
-            // Définit les champs created_at et updated_at avec la même date aléatoire
-            'created_at' => $created_at,
-            'updated_at' => $created_at,
-        ];
-    }
-}
+//     public function definition()
+//     {
+//         $faker = $this->faker;
 
+//         // Générer un nombre aléatoire entre 1 et 5 pour le nombre d'images
+//         $numPictures = $faker->numberBetween(1, 5);
+
+//         // Générer un tableau d'images avec un nombre aléatoire d'éléments
+//         $pictures = [];
+//         for ($i = 0; $i < $numPictures; $i++) {
+//             $pictures[] = $faker->imageUrl();
+//         }
+
+//         return [
+//             'title' => $faker->sentence(3),
+//             'description' => $faker->paragraph(4),
+//             'location' => $faker->city,
+//             'rating' => $faker->numberBetween(1, 5),
+//             'cover' => $faker->imageUrl(),
+//             'pictures' => json_encode($pictures), // Convertir le tableau en JSON pour la sauvegarde
+//             'created_at' => now(),
+//             'updated_at' => now(),
+//         ];
+//     }
+// }
