@@ -1,173 +1,8 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ config('app.name') }}</title>
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Styles spécifiques pour le carousel */
 
-        
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            margin: 0 auto;
-            border-radius: 40px;
-        }
+<div class="xl:px-40">
 
-        .carousel-container {
-            display: flex;
-            height: 500px;
-            transition: transform 0.5s ease;
-            border-radius: 40px;
-        }
+        <x-layout>
 
-        .carousel-item {
-            min-width: 100%;
-            flex: 0 0 100%;
-            object-fit: cover;
-            border-radius: 40px;
-        }
-        .carousel-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-
-        .carousel-control-btn {
-            color: white;
-            cursor: pointer;
-            padding: 10px;
-            border: none;
-            border-radius: 50%;
-            font-size: 24px;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .carousel-control-btn svg {
-            
-            width: 100px;
-            height: 100px;
-           
-        }
-
-        .carousel-status {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        .carousel-p {
-            position: absolute;
-            right: 50%;
-            bottom: 0px;
-            font-weight: 500;
-            color: white;
-            font-family: Montserrat;
-            font-size: 18px;
-        }
-        .sect1 {
-            display:flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: space-between
-        }
-
-        .stars {
-            display: flex;
-            align-items: center;
-        }
-
-        .stars svg {
-            width: 20px;
-            height: 20px;
-            margin-right: 2px;
-            fill: #ccc; /* Couleur par défaut des étoiles (grise) */
-        }
-
-        .stars .filled {
-            fill: #FF6060; /* Couleur des étoiles remplies (jaune) */
-        }
-
-        .host-info {
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 25px;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .host-info img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-
-        .accordion {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-        }
-
-        .accordion-item {
-            width: 100%;
-            /* border-bottom: 1px solid #ddd; */
-        }
-
-        .accordion-header {
-            padding: 10px;
-            cursor: pointer;
-            background-color: #FF6060;
-            border-radius: 5px 5px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-
-
-        }
-
-        .accordion-content {
-            display: none;
-            padding: 10px;
-
-
-        }
-
-        .accordion-content[data-visible="true"] {
-            display: block;
-
-        }
-
-        .accordion-header svg {
-            transition: transform 0.3s ease;
-            transform: rotate(0deg);
-            fill: white;
-        }
-
-        .accordion-header.open svg {
-            transform: rotate(-180deg);
-        }
-    </style>
-</head>
-<body class="antialiased pt-10 pb-16 md:pb-32">
-    <div class="mx-auto max-w-12xl px-4 sm:px-6 lg:px-8 xl:px-40">
         <main class="mt-10 md:mt-12 lg:mt-16 space-y-10 md:space-y-12 lg:space-y-14">
             @if (isset($logement))
             @if ($logement->pictures instanceof Illuminate\Database\Eloquent\Collection && $logement->pictures->isNotEmpty())
@@ -278,52 +113,55 @@
                 <p>Logement non trouvé.</p>
             @endif
         </main>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselContainer = document.getElementById('carouselContainer');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentIndex = 0;
-            const totalSlides = carouselContainer.getElementsByClassName('carousel-item').length;
-            const carouselStatus = document.getElementById('carouselStatus');
 
-            function showSlide(index) {
-                const slides = carouselContainer.getElementsByClassName('carousel-item');
-                if (index < 0) {
-                    currentIndex = slides.length - 1;
-                } else if (index >= slides.length) {
-                    currentIndex = 0;
-                } else {
-                    currentIndex = index;
-                }
-                carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-                updateCarouselStatus(currentIndex);
+
+        </x-layout>
+
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carouselContainer = document.getElementById('carouselContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+        const totalSlides = carouselContainer.getElementsByClassName('carousel-item').length;
+        const carouselStatus = document.getElementById('carouselStatus');
+
+        function showSlide(index) {
+            const slides = carouselContainer.getElementsByClassName('carousel-item');
+            if (index < 0) {
+                currentIndex = slides.length - 1;
+            } else if (index >= slides.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
             }
-
-            function updateCarouselStatus(index) {
-                carouselStatus.textContent = `${index + 1} / ${totalSlides}`;
-            }
-
-            prevBtn.addEventListener('click', function() {
-                showSlide(currentIndex - 1);
-            });
-
-            nextBtn.addEventListener('click', function() {
-                showSlide(currentIndex + 1);
-            });
-
+            carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
             updateCarouselStatus(currentIndex);
+        }
+
+        function updateCarouselStatus(index) {
+            carouselStatus.textContent = `${index + 1} / ${totalSlides}`;
+        }
+
+        prevBtn.addEventListener('click', function() {
+            showSlide(currentIndex - 1);
         });
 
+        nextBtn.addEventListener('click', function() {
+            showSlide(currentIndex + 1);
+        });
 
-        function toggleAccordionContent(id, header) {
-            const content = document.getElementById(id);
-            const isVisible = content.getAttribute('data-visible') === 'true';
+        updateCarouselStatus(currentIndex);
+    });
 
-            content.setAttribute('data-visible', String(!isVisible));
-            header.classList.toggle('open', !isVisible);
-        }
-    </script>
-</body>
-</html>
+
+    function toggleAccordionContent(id, header) {
+        const content = document.getElementById(id);
+        const isVisible = content.getAttribute('data-visible') === 'true';
+
+        content.setAttribute('data-visible', String(!isVisible));
+        header.classList.toggle('open', !isVisible);
+    }
+</script>
